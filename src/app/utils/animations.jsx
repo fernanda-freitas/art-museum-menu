@@ -20,7 +20,7 @@ export const slideDown = (delayEnter, delayExit) => {
   };
 };
 
-export const staggerToRight = {
+export const staggerToTop = {
   initial: { opacity: 0, bottom: -60 },
   enter: (delay) => ({
     opacity: 1,
@@ -33,7 +33,7 @@ export const staggerToRight = {
   }),
 };
 
-export const fadeScaleown = {
+export const fadeScaleDown = {
   initial: { scaleY: 0 },
   enter: {
     scaleY: "100%",

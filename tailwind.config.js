@@ -17,6 +17,7 @@ module.exports = {
         creme: "#FFFCF5",
         pink: "#FFE4E4",
         crimson: "#6C1A1A",
+        muted: "#a87a78",
       },
     },
   },
