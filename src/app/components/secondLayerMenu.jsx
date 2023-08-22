@@ -1,12 +1,15 @@
+"use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
 import menubg02 from "../../../public/images/menubg02.svg";
-import image03 from "../../../public/images/image03.jpg";
 
 import { slideDown, staggerAnimation, fadeDown } from "../utils/animations";
+import { useState } from "react";
 
-export default function secondLayerMenu({ isOpen }) {
+export default function SecondLayerMenu({ isOpen }) {
+  const [selectedImage, setSelectedImage] = useState("");
+
   const menu = [
     {
       title: "The museum",
@@ -15,7 +18,7 @@ export default function secondLayerMenu({ isOpen }) {
     },
     {
       title: "Exhibitions",
-      image: "image03.jpg",
+      image: "image01.png",
       delay: 0.95,
     },
     {
@@ -25,7 +28,7 @@ export default function secondLayerMenu({ isOpen }) {
     },
     {
       title: "Public",
-      image: "image03.jpg",
+      image: "image01.png",
       delay: 1.2,
     },
   ];
@@ -50,6 +53,7 @@ export default function secondLayerMenu({ isOpen }) {
               {menu.map((item, i) => {
                 return (
                   <motion.li
+                    onMouseEnter={() => setSelectedImage(item.image)}
                     custom={item.delay}
                     variants={staggerAnimation}
                     initial="initial"
@@ -69,13 +73,14 @@ export default function secondLayerMenu({ isOpen }) {
             animate={isOpen ? "enter" : ""}
             className="relative hidden md:inline-flex md:w-1/2 px-8 border-l border-opacity-30 border-crimson origin-top"
           >
-            {/* <Image
-              src={image03}
-              alt="menu image"
-              fill
-              className="pt-16 pb-8 px-40 object-cover"
-              placeholder="blur"
-            /> */}
+            {selectedImage && (
+              <Image
+                src={`/images/${selectedImage}`}
+                alt="menu image"
+                fill
+                className="pt-16 pb-8 px-40 object-cover"
+              />
+            )}
           </motion.div>
         </div>
       </div>
