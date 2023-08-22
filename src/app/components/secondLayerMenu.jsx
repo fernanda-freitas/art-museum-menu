@@ -4,7 +4,12 @@ import { motion } from "framer-motion";
 
 import menubg02 from "../../../public/images/menubg02.svg";
 
-import { slideDown, staggerAnimation, fadeDown } from "../utils/animations";
+import {
+  slideDown,
+  staggerAnimation,
+  fadeDown,
+  fadeIn,
+} from "../utils/animations";
 import { useState } from "react";
 
 export default function SecondLayerMenu({ isOpen }) {
@@ -71,8 +76,9 @@ export default function SecondLayerMenu({ isOpen }) {
             variants={fadeDown}
             initial="initial"
             animate={isOpen ? "enter" : ""}
-            className="relative hidden md:inline-flex md:w-1/2 px-8 border-l border-opacity-30 border-crimson origin-top"
-          >
+            className="relative border-l border-opacity-30 border-crimson origin-top"
+          ></motion.div>
+          <motion.div className="relative hidden md:inline-flex md:w-1/2 px-8">
             {selectedImage && (
               <Image
                 src={`/images/${selectedImage}`}

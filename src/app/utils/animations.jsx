@@ -60,3 +60,21 @@ export const fadeDown = {
     },
   },
 };
+
+export const fadeInOut = {
+  initial: { opacity: 0 },
+  enter: {
+    opacity: 0.6,
+    transition: {
+      delay: 0.15,
+      duration: 0.3,
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      delay: 0.6,
+      duration: 0.3,
+    },
+  },
+};

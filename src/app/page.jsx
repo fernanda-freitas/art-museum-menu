@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <main className="relative h-screen w-screen overflow-hidden bg-creme">
       <Nav handleMenu={handleMenu} isOpen={isOpen} />
-      <Content />
+      <Content isOpen={isOpen} />
       <FirstLayerMenu isOpen={isOpen} />
       <SecondLayerMenu isOpen={isOpen} />
     </main>
