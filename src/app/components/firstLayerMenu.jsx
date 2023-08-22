@@ -24,15 +24,15 @@ export default function FirstLayerMenu({ isOpen }) {
 
   const workWithUs = {
     initial: {
-      bottom: -30,
+      bottom: -20,
       opacity: 0,
     },
     enter: {
       bottom: 24,
       opacity: 1,
       transition: {
-        duration: 0.6,
-        delay: 1,
+        duration: 0.5,
+        delay: 1.6,
         ease: [0.08, 0.65, 0.53, 0.96],
       },
     },
@@ -54,7 +54,7 @@ export default function FirstLayerMenu({ isOpen }) {
         <span className=" text-xl font-light text-creme">Work with us</span>
         <button
           type="button"
-          className="text-crimson bg-creme px-5 py-2 rounded-full"
+          className="font-medium text-crimson bg-creme px-5 py-2 rounded-full hover:scale-110 transition duration-300"
         >
           Apply
         </button>

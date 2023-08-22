@@ -9,18 +9,22 @@ export default function secondLayerMenu({ isOpen }) {
     {
       title: "The museum",
       image: "image03.jpg",
+      delay: 0.9,
     },
     {
       title: "Exhibitions",
       image: "image03.jpg",
+      delay: 0.95,
     },
     {
       title: "Collections",
       image: "image03.jpg",
+      delay: 1.05,
     },
     {
       title: "Public",
       image: "image03.jpg",
+      delay: 1.2,
     },
   ];
 
@@ -44,16 +48,28 @@ export default function secondLayerMenu({ isOpen }) {
   };
 
   const listAnimation = {
-    initial: { opacity: 0, left: -40 },
-    enter: (i) => ({
+    initial: { opacity: 0, bottom: -60 },
+    enter: (delay) => ({
       opacity: 1,
-      left: 0,
+      bottom: 0,
       transition: {
-        delay: 0.8 * i,
+        delay: delay,
         duration: 0.8,
         ease: [0.08, 0.65, 0.53, 0.96],
       },
     }),
+  };
+
+  const fadeDown = {
+    initial: { scaleY: 0 },
+    enter: {
+      scaleY: "100%",
+      transition: {
+        delay: 0.8,
+        duration: 1.2,
+        ease: [0.08, 0.65, 0.53, 0.96],
+      },
+    },
   };
 
   return (
@@ -76,11 +92,11 @@ export default function secondLayerMenu({ isOpen }) {
               {menu.map((item, i) => {
                 return (
                   <motion.li
-                    custom={i}
+                    custom={item.delay}
                     variants={listAnimation}
                     initial="initial"
                     animate={isOpen ? "enter" : ""}
-                    className="relative font-reailge text-6xl lg:text-custom leading-snug text-crimson opacity-60 hover:cursor-pointer hover:opacity-100"
+                    className="overflow-hidden relative font-reailge text-6xl lg:text-custom leading-snug text-crimson opacity-60 hover:cursor-pointer hover:opacity-100"
                     key={i}
                   >
                     {item.title}
@@ -89,15 +105,20 @@ export default function secondLayerMenu({ isOpen }) {
               })}
             </ul>
           </div>
-          <div className="relative hidden md:inline-flex md:w-1/2 px-8 border-l border-opacity-30 border-crimson">
-            <Image
+          <motion.div
+            variants={fadeDown}
+            initial="initial"
+            animate={isOpen ? "enter" : ""}
+            className="relative hidden md:inline-flex md:w-1/2 px-8 border-l border-opacity-30 border-crimson origin-top"
+          >
+            {/* <Image
               src={image03}
               alt="menu image"
               fill
               className="pt-16 pb-8 px-40 object-cover"
               placeholder="blur"
-            />
-          </div>
+            /> */}
+          </motion.div>
         </div>
       </div>
     </motion.div>
