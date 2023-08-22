@@ -3,15 +3,12 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-import logotype from "../../public/images/logotype.svg";
-import logotypered from "../../public/images/logotypered.svg";
-import image01 from "../../public/images/image01.png";
 import image03 from "../../public/images/image03.jpg";
-import typography from "../../public/images/image02.svg";
 import menubg01 from "../../public/images/menubg01.svg";
 import menubg02 from "../../public/images/menubg02.svg";
 
 import Nav from "./components/nav";
+import Content from "./components/content";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,17 +78,7 @@ export default function Home() {
     <main className="relative h-screen w-screen overflow-hidden bg-creme">
       {/* Homepage */}
       <Nav handleMenu={handleMenu} />
-      <div className="absolute w-screen h-screen -top-24 -right-4 z-10">
-        <Image src={typography} alt="exhibition information" fill />
-      </div>
-      <div className="hidden md:inline absolute -bottom-52 left-1/2 -translate-x-1/2">
-        <Image
-          src={image01}
-          alt="exhibition information"
-          style={{ minWidth: 400, minHeight: 300 }}
-          className="ovject-fill"
-        />
-      </div>
+      <Content />
       {/* 1rd layer */}
       <motion.div
         variants={firstLayer}
