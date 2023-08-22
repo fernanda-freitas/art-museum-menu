@@ -42,7 +42,7 @@ export default function Home() {
   ];
 
   const firstLayer = {
-    initial: { y: -800 },
+    initial: { y: -1000 },
     enter: {
       y: 0,
       transition: {
@@ -51,9 +51,9 @@ export default function Home() {
       },
     },
     exit: {
-      y: -800,
+      y: -1000,
       transition: {
-        duration: 1.2,
+        duration: 0.8,
         delay: 0.1,
         ease: [0.76, 0, 0.24, 1],
       },
@@ -61,19 +61,19 @@ export default function Home() {
   };
 
   const secondLayer = {
-    initial: { y: -800 },
+    initial: { y: -1000 },
     enter: {
       y: 0,
       transition: {
-        delay: 0.1,
-        duration: 0.8,
+        delay: 0,
+        duration: 1.2,
         ease: [0.76, 0, 0.24, 1],
       },
     },
     exit: {
-      y: -800,
+      y: -1000,
       transition: {
-        duration: 1.2,
+        duration: 0.8,
         ease: [0.76, 0, 0.24, 1],
       },
     },
@@ -107,16 +107,14 @@ export default function Home() {
         variants={firstLayer}
         initial="initial"
         animate={isOpen ? "enter" : ""}
-        exit={isOpen ? "" : "exit"}
+        exit="exit"
         className="absolute inset-0 bottom-10 z-30 -translate-y-3/4"
       >
         <div className="absolute bottom-6 right-8 flex items-center gap-x-8 z-30">
-          <span className=" text-xl font-light text-crimson color-crimson">
-            Work with us
-          </span>
+          <span className=" text-xl font-light text-creme">Work with us</span>
           <button
             type="button"
-            className="text-pink bg-crimson px-5 py-2 rounded-full"
+            className="text-crimson bg-creme px-5 py-2 rounded-full"
           >
             Apply
           </button>
@@ -124,7 +122,7 @@ export default function Home() {
         <Image
           src={menubg01}
           alt="menu background"
-          className="bg-pink object-cover"
+          className="bg-crimson object-cover"
           fill
         />
       </motion.div>
@@ -133,7 +131,7 @@ export default function Home() {
         variants={secondLayer}
         initial="initial"
         animate={isOpen ? "enter" : ""}
-        exit={isOpen ? "" : "exit"}
+        exit="exit"
         className="absolute inset-0 bottom-32 bg-creme z-40 -translate-y-full"
       >
         <div className="absolute inset-0">
@@ -158,7 +156,7 @@ export default function Home() {
                 {menu.map((item, i) => {
                   return (
                     <li
-                      className="font-reailge text-6xl lg:text-custom leading-snug text-crimson opacity-60 hover:opacity-100 hover:cursor-pointer"
+                      className="font-reailge text-6xl lg:text-custom leading-snug text-crimson opacity-60 hover:cursor-pointer hover:opacity-100"
                       key={i}
                     >
                       {item.title}

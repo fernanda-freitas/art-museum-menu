@@ -16,7 +16,7 @@ module.exports = {
       colors: {
         creme: "#FFFCF5",
         pink: "#FFE4E4",
-        crimson: "#A14545",
+        crimson: "#6C1A1A",
       },
     },
   },
