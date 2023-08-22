@@ -13,22 +13,22 @@ export default function SecondLayerMenu({ isOpen }) {
   const menu = [
     {
       title: "The museum",
-      image: "image03.jpg",
+      image: "image03.jpeg",
       delay: 0.9,
     },
     {
       title: "Exhibitions",
-      image: "image01.png",
+      image: "image04.jpeg",
       delay: 0.95,
     },
     {
       title: "Collections",
-      image: "image03.jpg",
+      image: "image05.jpeg",
       delay: 1.05,
     },
     {
       title: "Public",
-      image: "image01.png",
+      image: "image06.jpeg",
       delay: 1.2,
     },
   ];
