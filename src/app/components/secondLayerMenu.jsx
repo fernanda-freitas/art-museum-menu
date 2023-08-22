@@ -1,8 +1,10 @@
 import Image from "next/image";
-import { motion, staggerChildren } from "framer-motion";
+import { motion } from "framer-motion";
 
 import menubg02 from "../../../public/images/menubg02.svg";
 import image03 from "../../../public/images/image03.jpg";
+
+import { slideDown, staggerAnimation, fadeDown } from "../utils/animations";
 
 export default function secondLayerMenu({ isOpen }) {
   const menu = [
@@ -28,53 +30,9 @@ export default function secondLayerMenu({ isOpen }) {
     },
   ];
 
-  const secondLayer = {
-    initial: { y: -1000 },
-    enter: {
-      y: 0,
-      transition: {
-        delay: 0.2,
-        duration: 0.8,
-        ease: [0.08, 0.65, 0.53, 0.96],
-      },
-    },
-    exit: {
-      y: -1000,
-      transition: {
-        duration: 0.8,
-        ease: [0.08, 0.65, 0.53, 0.96],
-      },
-    },
-  };
-
-  const listAnimation = {
-    initial: { opacity: 0, bottom: -60 },
-    enter: (delay) => ({
-      opacity: 1,
-      bottom: 0,
-      transition: {
-        delay: delay,
-        duration: 0.8,
-        ease: [0.08, 0.65, 0.53, 0.96],
-      },
-    }),
-  };
-
-  const fadeDown = {
-    initial: { scaleY: 0 },
-    enter: {
-      scaleY: "100%",
-      transition: {
-        delay: 0.8,
-        duration: 1.2,
-        ease: [0.08, 0.65, 0.53, 0.96],
-      },
-    },
-  };
-
   return (
     <motion.div
-      variants={secondLayer}
+      variants={slideDown(0.2, 0.3)}
       initial="initial"
       animate={isOpen ? "enter" : "exit"}
       className="absolute inset-0 bottom-32 bg-creme z-40 -translate-y-full"
@@ -93,7 +51,7 @@ export default function secondLayerMenu({ isOpen }) {
                 return (
                   <motion.li
                     custom={item.delay}
-                    variants={listAnimation}
+                    variants={staggerAnimation}
                     initial="initial"
                     animate={isOpen ? "enter" : ""}
                     className="overflow-hidden relative font-reailge text-6xl lg:text-custom leading-snug text-crimson opacity-60 hover:cursor-pointer hover:opacity-100"
