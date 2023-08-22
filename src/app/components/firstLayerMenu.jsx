@@ -22,15 +22,36 @@ export default function FirstLayerMenu({ isOpen }) {
     },
   };
 
+  const workWithUs = {
+    initial: {
+      bottom: -30,
+      opacity: 0,
+    },
+    enter: {
+      bottom: 24,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        delay: 1,
+        ease: [0.08, 0.65, 0.53, 0.96],
+      },
+    },
+  };
+
   return (
     <motion.div
       variants={firstLayer}
       initial="initial"
       animate={isOpen ? "enter" : ""}
       exit="exit"
-      className="absolute inset-0 bottom-10 z-30 -translate-y-3/4"
+      className="absolute inset-0 bottom-10 z-30 -translate-y-3/4 overflow-hidden"
     >
-      <div className="absolute bottom-6 right-8 flex items-center gap-x-8 z-30">
+      <motion.div
+        variants={workWithUs}
+        initial="initial"
+        animate={isOpen ? "enter" : ""}
+        className="absolute right-8 flex items-center gap-x-8 z-30"
+      >
         <span className=" text-xl font-light text-creme">Work with us</span>
         <button
           type="button"
@@ -38,7 +59,7 @@ export default function FirstLayerMenu({ isOpen }) {
         >
           Apply
         </button>
-      </div>
+      </motion.div>
       <Image
         src={menubg01}
         alt="menu background"
