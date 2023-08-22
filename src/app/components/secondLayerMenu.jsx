@@ -4,12 +4,7 @@ import { motion } from "framer-motion";
 
 import menubg02 from "../../../public/images/menubg02.svg";
 
-import {
-  slideDown,
-  staggerAnimation,
-  fadeDown,
-  fadeIn,
-} from "../utils/animations";
+import { slideDown, staggerToRight, fadeScaleDown } from "../utils/animations";
 import { useState } from "react";
 
 export default function SecondLayerMenu({ isOpen }) {
@@ -60,7 +55,7 @@ export default function SecondLayerMenu({ isOpen }) {
                   <motion.li
                     onMouseEnter={() => setSelectedImage(item.image)}
                     custom={item.delay}
-                    variants={staggerAnimation}
+                    variants={staggerToRight}
                     initial="initial"
                     animate={isOpen ? "enter" : ""}
                     className="overflow-hidden relative font-reailge text-6xl lg:text-custom leading-snug text-crimson opacity-60 hover:cursor-pointer hover:opacity-100"
@@ -73,7 +68,7 @@ export default function SecondLayerMenu({ isOpen }) {
             </ul>
           </div>
           <motion.div
-            variants={fadeDown}
+            variants={fadeScaleDown}
             initial="initial"
             animate={isOpen ? "enter" : ""}
             className="relative border-l border-opacity-30 border-crimson origin-top"

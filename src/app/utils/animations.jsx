@@ -20,23 +20,7 @@ export const slideDown = (delayEnter, delayExit) => {
   };
 };
 
-export const slideUp = {
-  initial: {
-    bottom: -20,
-    opacity: 0,
-  },
-  enter: {
-    bottom: 24,
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-      delay: 1.6,
-      ease: [0.08, 0.65, 0.53, 0.96],
-    },
-  },
-};
-
-export const staggerAnimation = {
+export const staggerToRight = {
   initial: { opacity: 0, bottom: -60 },
   enter: (delay) => ({
     opacity: 1,
@@ -49,7 +33,7 @@ export const staggerAnimation = {
   }),
 };
 
-export const fadeDown = {
+export const fadeScaleown = {
   initial: { scaleY: 0 },
   enter: {
     scaleY: "100%",
@@ -75,6 +59,19 @@ export const fadeInOut = {
     transition: {
       delay: 0.6,
       duration: 0.3,
+    },
+  },
+};
+
+export const fadeUpIn = {
+  initial: { opacity: 0, bottom: 44 },
+  enter: {
+    opacity: 1,
+    bottom: 24,
+    transition: {
+      duration: 0.5,
+      delay: 1.8,
+      ease: [0.08, 0.65, 0.53, 0.96],
     },
   },
 };

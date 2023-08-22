@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import menubg01 from "../../../public/images/menubg01.svg";
-import { slideDown, slideUp } from "../utils/animations";
+import { slideDown, fadeUpIn } from "../utils/animations";
 
 export default function FirstLayerMenu({ isOpen }) {
   return (
@@ -12,7 +12,7 @@ export default function FirstLayerMenu({ isOpen }) {
       className="absolute inset-0 bottom-10 z-30 -translate-y-3/4 overflow-hidden"
     >
       <motion.div
-        variants={slideUp}
+        variants={fadeUpIn}
         initial="initial"
         animate={isOpen ? "enter" : ""}
         className="absolute right-8 flex items-center gap-x-8 z-30"
