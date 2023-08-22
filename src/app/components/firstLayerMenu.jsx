@@ -42,8 +42,7 @@ export default function FirstLayerMenu({ isOpen }) {
     <motion.div
       variants={firstLayer}
       initial="initial"
-      animate={isOpen ? "enter" : ""}
-      exit="exit"
+      animate={isOpen ? "enter" : "exit"}
       className="absolute inset-0 bottom-10 z-30 -translate-y-3/4 overflow-hidden"
     >
       <motion.div

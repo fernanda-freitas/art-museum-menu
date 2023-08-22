@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, staggerChildren } from "framer-motion";
 
 import menubg02 from "../../../public/images/menubg02.svg";
 import image03 from "../../../public/images/image03.jpg";
@@ -43,12 +43,24 @@ export default function secondLayerMenu({ isOpen }) {
     },
   };
 
+  const listAnimation = {
+    initial: { opacity: 0, left: -40 },
+    enter: (i) => ({
+      opacity: 1,
+      left: 0,
+      transition: {
+        delay: 0.8 * i,
+        duration: 0.8,
+        ease: [0.08, 0.65, 0.53, 0.96],
+      },
+    }),
+  };
+
   return (
     <motion.div
       variants={secondLayer}
       initial="initial"
-      animate={isOpen ? "enter" : ""}
-      exit="exit"
+      animate={isOpen ? "enter" : "exit"}
       className="absolute inset-0 bottom-32 bg-creme z-40 -translate-y-full"
     >
       <div className="absolute inset-0">
@@ -63,12 +75,16 @@ export default function secondLayerMenu({ isOpen }) {
             <ul className="pt-44 px-8">
               {menu.map((item, i) => {
                 return (
-                  <li
-                    className="font-reailge text-6xl lg:text-custom leading-snug text-crimson opacity-60 hover:cursor-pointer hover:opacity-100"
+                  <motion.li
+                    custom={i}
+                    variants={listAnimation}
+                    initial="initial"
+                    animate={isOpen ? "enter" : ""}
+                    className="relative font-reailge text-6xl lg:text-custom leading-snug text-crimson opacity-60 hover:cursor-pointer hover:opacity-100"
                     key={i}
                   >
                     {item.title}
-                  </li>
+                  </motion.li>
                 );
               })}
             </ul>
