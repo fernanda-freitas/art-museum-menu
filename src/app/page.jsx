@@ -4,11 +4,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 import image03 from "../../public/images/image03.jpg";
-import menubg01 from "../../public/images/menubg01.svg";
 import menubg02 from "../../public/images/menubg02.svg";
 
 import Nav from "./components/nav";
 import Content from "./components/content";
+import FirstLayerMenu from "./components/firstLayerMenu";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -79,30 +79,7 @@ export default function Home() {
       {/* Homepage */}
       <Nav handleMenu={handleMenu} />
       <Content />
-      {/* 1rd layer */}
-      <motion.div
-        variants={firstLayer}
-        initial="initial"
-        animate={isOpen ? "enter" : ""}
-        exit="exit"
-        className="absolute inset-0 bottom-10 z-30 -translate-y-3/4"
-      >
-        <div className="absolute bottom-6 right-8 flex items-center gap-x-8 z-30">
-          <span className=" text-xl font-light text-creme">Work with us</span>
-          <button
-            type="button"
-            className="text-crimson bg-creme px-5 py-2 rounded-full"
-          >
-            Apply
-          </button>
-        </div>
-        <Image
-          src={menubg01}
-          alt="menu background"
-          className="bg-crimson object-cover"
-          fill
-        />
-      </motion.div>
+      <FirstLayerMenu isOpen={isOpen} />
       {/* 2rd layer */}
       <motion.div
         variants={secondLayer}
