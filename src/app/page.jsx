@@ -47,7 +47,7 @@ export default function Home() {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: [0.76, 0, 0.24, 1],
+        ease: [0.08, 0.65, 0.53, 0.96],
       },
     },
     exit: {
@@ -55,7 +55,7 @@ export default function Home() {
       transition: {
         duration: 0.8,
         delay: 0.1,
-        ease: [0.76, 0, 0.24, 1],
+        ease: [0.08, 0.65, 0.53, 0.96],
       },
     },
   };
@@ -65,16 +65,16 @@ export default function Home() {
     enter: {
       y: 0,
       transition: {
-        delay: 0,
-        duration: 1.2,
-        ease: [0.76, 0, 0.24, 1],
+        delay: 0.2,
+        duration: 0.8,
+        ease: [0.08, 0.65, 0.53, 0.96],
       },
     },
     exit: {
       y: -1000,
       transition: {
         duration: 0.8,
-        ease: [0.76, 0, 0.24, 1],
+        ease: [0.08, 0.65, 0.53, 0.96],
       },
     },
   };
