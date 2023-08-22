@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { ease, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import logotype from "../../public/images/logotype.svg";
 import logotypered from "../../public/images/logotypered.svg";
@@ -11,15 +11,13 @@ import typography from "../../public/images/image02.svg";
 import menubg01 from "../../public/images/menubg01.svg";
 import menubg02 from "../../public/images/menubg02.svg";
 
+import Nav from "./components/nav";
+
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleOpen = () => {
-    setIsOpen(true);
-  };
-
-  const handleClose = () => {
-    setIsOpen(false);
+  const handleMenu = () => {
+    setIsOpen(!isOpen);
   };
 
   const menu = [
@@ -82,15 +80,7 @@ export default function Home() {
   return (
     <main className="relative h-screen w-screen overflow-hidden bg-creme">
       {/* Homepage */}
-      <div className="absolute w-full left-0 top-0 z-20 flex justify-between p-8">
-        <Image src={logotype} alt="logotype" />
-        <span
-          onClick={handleOpen}
-          className="uppercase text-base hover:cursor-pointer"
-        >
-          Menu
-        </span>
-      </div>
+      <Nav handleMenu={handleMenu} />
       <div className="absolute w-screen h-screen -top-24 -right-4 z-10">
         <Image src={typography} alt="exhibition information" fill />
       </div>
@@ -135,15 +125,6 @@ export default function Home() {
         className="absolute inset-0 bottom-32 bg-creme z-40 -translate-y-full"
       >
         <div className="absolute inset-0">
-          <div className="absolute w-full left-0 top-0 z-20 flex justify-between p-8">
-            <Image src={logotypered} alt="logotype" />
-            <span
-              onClick={handleClose}
-              className="uppercase text-base hover:cursor-pointer text-crimson"
-            >
-              Menu
-            </span>
-          </div>
           <div className="flex w-full h-full">
             <div className="relative md:w-1/2">
               <Image
