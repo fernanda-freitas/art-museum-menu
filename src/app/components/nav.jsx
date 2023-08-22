@@ -23,7 +23,7 @@ export default function Nav({ isOpen, handleMenu }) {
           isOpen ? "text-crimson" : "text-black"
         }`}
       >
-        Menu
+        {isOpen ? "(Close)" : "Menu"}
       </span>
     </div>
   );
