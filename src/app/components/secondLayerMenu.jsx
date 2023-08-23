@@ -1,11 +1,11 @@
 "use client";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
 import menubg02 from "../../../public/images/menubg02.svg";
 
 import { slideDown, staggerToTop, fadeScaleDown } from "../utils/animations";
-import { useState } from "react";
 
 export default function SecondLayerMenu({ isOpen }) {
   const [selectedImage, setSelectedImage] = useState("");
@@ -32,6 +32,12 @@ export default function SecondLayerMenu({ isOpen }) {
       delay: 1.2,
     },
   ];
+
+  useEffect(() => {
+    if (isOpen === false) {
+      setSelectedImage("");
+    }
+  }, [isOpen]);
 
   return (
     <motion.div
@@ -61,7 +67,7 @@ export default function SecondLayerMenu({ isOpen }) {
                     className="overflow-hidden relative font-reailge text-6xl lg:text-custom leading-snug hover:cursor-pointer"
                     key={i}
                   >
-                    <span className="text-muted hover:text-crimson hover:translate-x-8 transition-all ease-in-out duration-300">
+                    <span className="text-muted hover:text-crimson relative left-0 hover:left-8 transition-all ease-in-out duration-300">
                       {item.title}
                     </span>
                   </motion.li>
@@ -81,7 +87,7 @@ export default function SecondLayerMenu({ isOpen }) {
                 src={`/images/${selectedImage}`}
                 alt="menu image"
                 fill
-                className="pt-16 pb-8 px-40 object-cover"
+                className="pt-16 pb-8 px-40 object-cover opacity"
               />
             )}
           </motion.div>
