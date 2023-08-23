@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -9,7 +9,7 @@ import { slideDown, staggerToTop, fadeScaleDown } from "../utils/animations";
 
 export default function SecondLayerMenu({ isOpen }) {
   const [selectedImage, setSelectedImage] = useState("");
-
+  const prevImage = useRef("");
   const menu = [
     {
       title: "The museum",
@@ -37,7 +37,8 @@ export default function SecondLayerMenu({ isOpen }) {
     if (isOpen === false) {
       setSelectedImage("");
     }
-  }, [isOpen]);
+    prevImage.current = selectedImage;
+  }, [isOpen, selectedImage]);
 
   return (
     <motion.div
@@ -46,6 +47,7 @@ export default function SecondLayerMenu({ isOpen }) {
       animate={isOpen ? "enter" : "exit"}
       className="absolute inset-0 bottom-32 bg-creme z-40 -translate-y-full"
     >
+      {console.log(prevImage, selectedImage)}
       <div className="absolute inset-0">
         <div className="flex w-full h-full">
           <div className="relative md:w-1/2">
@@ -87,7 +89,8 @@ export default function SecondLayerMenu({ isOpen }) {
                 src={`/images/${selectedImage}`}
                 alt="menu image"
                 fill
-                className="pt-16 pb-8 px-40 object-cover opacity"
+                sizes="auto"
+                className="pt-16 pb-8 px-40 object-cover"
               />
             )}
           </motion.div>
