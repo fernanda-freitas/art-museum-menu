@@ -1,15 +1,14 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-
 import menubg02 from "../../../public/images/menubg02.svg";
-
 import { slideDown, staggerToTop, fadeScaleDown } from "../utils/animations";
 
 export default function SecondLayerMenu({ isOpen }) {
   const [selectedImage, setSelectedImage] = useState("");
-  const prevImage = useRef("");
+  const ref = useRef(null);
+
   const menu = [
     {
       title: "The museum",
@@ -37,8 +36,7 @@ export default function SecondLayerMenu({ isOpen }) {
     if (isOpen === false) {
       setSelectedImage("");
     }
-    prevImage.current = selectedImage;
-  }, [isOpen, selectedImage]);
+  }, [isOpen]);
 
   return (
     <motion.div
@@ -47,7 +45,6 @@ export default function SecondLayerMenu({ isOpen }) {
       animate={isOpen ? "enter" : "exit"}
       className="absolute inset-0 bottom-32 bg-creme z-40 -translate-y-full"
     >
-      {console.log(prevImage, selectedImage)}
       <div className="absolute inset-0">
         <div className="flex w-full h-full">
           <div className="relative md:w-1/2">
@@ -83,9 +80,10 @@ export default function SecondLayerMenu({ isOpen }) {
             animate={isOpen ? "enter" : ""}
             className="relative border-l border-opacity-30 border-crimson origin-top"
           ></motion.div>
-          <motion.div className="relative hidden md:inline-flex md:w-1/2 px-8">
+          <div className="relative hidden md:inline-flex md:w-1/2 px-8">
             {selectedImage && (
               <Image
+                ref={ref}
                 src={`/images/${selectedImage}`}
                 alt="menu image"
                 fill
@@ -93,7 +91,7 @@ export default function SecondLayerMenu({ isOpen }) {
                 className="pt-16 pb-8 px-40 object-cover"
               />
             )}
-          </motion.div>
+          </div>
         </div>
       </div>
     </motion.div>
